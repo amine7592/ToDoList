@@ -12,6 +12,7 @@ public class Note  {
     private String body;
     private Status status;
     private Date createdAt,modifiedAt,dueDate;
+    private int id;
 
     public String getTitle() {
         return title;
@@ -47,5 +48,13 @@ public class Note  {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }
