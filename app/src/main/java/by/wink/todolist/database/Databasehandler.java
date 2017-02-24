@@ -23,7 +23,7 @@ public class Databasehandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database Name
     private static final String DATABASE_NAME = "notes";
@@ -62,7 +62,7 @@ public class Databasehandler extends SQLiteOpenHelper {
      */
 
 
-    public void addNote(Note note) {
+    public long addNote(Note note) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -70,8 +70,9 @@ public class Databasehandler extends SQLiteOpenHelper {
         values.put(KEY_BODY, note.getBody());
 
         // Inserting Row
-        db.insert(TABLE_NOTES, null, values);
+        long insert = db.insert(TABLE_NOTES, null, values);
         db.close(); // Closing database connection
+        return insert;
     }
 
     // Getting All Notes
